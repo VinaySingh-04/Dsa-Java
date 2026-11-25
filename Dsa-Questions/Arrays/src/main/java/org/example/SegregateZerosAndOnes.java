@@ -18,7 +18,8 @@ public class SegregateZerosAndOnes {
             arr[i] = scanner.nextInt();
         }
 
-        segregate(arr);
+//        segregate(arr);
+        segregateUsingSwap(arr);
 
         for (int j : arr) {
             System.out.print(j + " ");
@@ -26,6 +27,7 @@ public class SegregateZerosAndOnes {
 
     }
 
+    //counting approach
     public static void segregate(int[] arr){
         int countZeros = 0;
         int countOnes = 0;
@@ -45,5 +47,27 @@ public class SegregateZerosAndOnes {
         for(int i = countZeros;i<arr.length;i++){
             arr[i] = 1;
         }
+    }
+
+    //uisng swap
+    public static void segregateUsingSwap(int[] arr){
+        int left = 0;
+        int right = arr.length-1;
+        while(left<right){
+            if(arr[left] == 0){
+                left++;
+            } else if (arr[right] == 1) {
+                right--;
+            }else {
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+
+        }
+
+
     }
 }
